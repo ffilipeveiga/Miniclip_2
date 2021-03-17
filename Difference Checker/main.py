@@ -49,19 +49,6 @@ class DiferenceChecker:
                 if key == "event":
                     DiferenceChecker.eventChecker(self, condition)
 
-        # if ("duration" in self.campaingn[condition]) and ("duration" in self.campaingn2[condition]):
-        #     DiferenceChecker.dateChecker(self, condition)        
-
-        # elif ("date" in self.campaingn[condition]) and ("date" in self.campaingn2[condition]):
-        #     DiferenceChecker.dateChecker(self, condition)
-        # elif ("event" in self.campaingn[condition]) and ("event" in self.campaingn2[condition]):
-        #     DiferenceChecker.eventChecker(self, condition)
-
-        # elif ("date" in self.campaingn[condition]) and ("event" in self.campaingn2[condition]):
-        #     self.differences.append("The "+ self.campaingn["name"] +" has date and no event and the " + self.campaingn2["name"] + " has the exact opposite.")
-        # elif ("event" in self.campaingn[condition]) and ("date" in self.campaingn2[condition]):
-        #     self.differences.append("The "+ self.campaingn["name"] +" has event and no date and the " + self.campaingn2["name"] + " has the exact opposite.")
-
     def durationChecker(self, condition):
         if self.campaingn[condition]["duration"] == self.campaingn2[condition]["duration"]:
             self.differences.append(f"The {condition} duration is diferent.")
@@ -120,15 +107,12 @@ def main():
         c1= DiferenceChecker(campaign, campaign2)
         c1.differences.append(f"Deferences between {path} and {path2}!")
 
-        # c1.nameChecker()
+        c1.nameChecker()
         c1.startChecker("start")
 
-
-        # c1.popupChecker()
-
-        # c1.accessChecker()
-
-        # c1.endChecker("end")
+        c1.popupChecker()
+        c1.accessChecker()
+        c1.endChecker("end")
 
         diferences_list=c1.differences
         print(diferences_list)

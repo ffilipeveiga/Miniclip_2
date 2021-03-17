@@ -12,8 +12,8 @@ class Validation:
             print("error!!!!!!!!!!!!!!!")
         
         Validation.validateName(self)
-        Validation.validadeStartEnd(self, "start")
-        Validation.validadeStartEnd(self, "end")
+        Validation.validadeStart(self)
+        Validation.validadeEnd(self)
         if Validation.validatePopup(self):
             Validation.validateArt(self, "popup")
             Validation.ValidateTransaction(self)
@@ -32,15 +32,35 @@ class Validation:
             #return self.campaingn["name"]
             print("name is ok!")
 
-    def validadeStartEnd(self, condition):
-        if condition not in self.campaingn:
+    def validadeStart(self):
+        if "start" not in self.campaingn:
             self.errors.append("The Start is missing!!!")
         else:
-            if "date"  in self.campaingn[condition]:
+            if "date"  in self.campaingn["start"]:
                 Validation.validateDate(self, "start")
 
-            if "event" in self.campaingn[condition]:
+            if "event" in self.campaingn["start"]:
                 Validation.validateEvent(self, "start")
+    
+    def validadeEnd(self):
+        if "end" in self.campaingn:
+            print("End is ok!")
+            Validation.validateDate(self, "end")
+            Validation.validateEvent(self, "end")
+            Validation.validateDuration(self, "end")
+    
+    def validateDuration(self, to_duration):
+
+        if "duration" in self.campaingn[to_duration]:
+            if isinstance(self.campaingn[to_duration]["duration"], float):
+                self.errors.append('The duration must be a positive float number"!')
+                print("Duration is ok!")
+            else:   
+                d = float(self.campaingn[to_duration]["duration"])
+                if d >= 0:
+                    self.errors.append("Durantion must be a positive, bigger than  zero (and a float number)!")
+                    print("duration is positive!")
+
 
     def validateDate(self, to_date):
         try:
@@ -59,7 +79,7 @@ class Validation:
                 print("source ok!")
             
             if isinstance(self.campaingn[to_event]["event"]["identifier"], str):
-                self.errors.append('The soure event must be "self" or "application"!')
+                self.errors.append("The identifier must be a string!")
                 print("identifier ok!")
             
 
