@@ -2,13 +2,13 @@ import os
 import sys
 import time
 import json
-from campaingn import validation
+from campaign import validation
 
 def getFileContent(path):
     f = open(path, "r")
     return json.load(f)
 
-def validateCampaingn(campaign):
+def validateCampaign(campaign):
     c=validation.Validation(campaign)
     return c
 
@@ -27,13 +27,13 @@ def main():
                 print(campaign_path)
                 print("!!!!!!!!!!!!!!!!!!!")
                 campaign = getFileContent(json_path)
-                validateCampaingn(campaign)
-                a=validateCampaingn(campaign)
+                validateCampaign(campaign)
+                a=validateCampaign(campaign)
                 a.validate()
     elif os.path.isfile(path):
         campaign = getFileContent(path)
         print("\n")
-        a=validateCampaingn(campaign)
+        a=validateCampaign(campaign)
         a.validate()
         print("\n")
         errors_list= a.errors

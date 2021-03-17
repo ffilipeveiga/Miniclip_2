@@ -9,9 +9,9 @@ def getFileContent(path):
 
 # I assume that the json have been validated already at this point!
 class DiferenceChecker:
-    def __init__(self, campaingn, campaingn2):
-        self.campaingn = campaingn
-        self.campaingn2 = campaingn2
+    def __init__(self, campaign, campaign2):
+        self.campaign = campaign
+        self.campaign2 = campaign2
         self.differences = []
     
     def Checker():
@@ -19,14 +19,14 @@ class DiferenceChecker:
 
 
     def nameChecker(self):
-        if self.campaingn["name"] == self.campaingn2["name"]:
+        if self.campaign["name"] == self.campaign2["name"]:
             self.differences.append(f"The name is diferent.")
     
     def endChecker(self, condition):
 
-        for key in  (self.campaingn[condition]):
-            if key not in self.campaingn2[condition]:
-                self.differences.append("The "+ self.campaingn["name"] +" has " + key + " in the \"end\" and " + self.campaingn2["name"] + " does not.")
+        for key in  (self.campaign[condition]):
+            if key not in self.campaign2[condition]:
+                self.differences.append("The "+ self.campaign["name"] +" has " + key + " in the \"end\" and " + self.campaign2["name"] + " does not.")
                 print(key)
             else:
                 if key == "date":
@@ -39,9 +39,9 @@ class DiferenceChecker:
 
     def startChecker(self, condition):
 
-        for key in  (self.campaingn[condition]):
-            if key not in self.campaingn2[condition]:
-                self.differences.append("The "+ self.campaingn["name"] +" has " + key + " in the \"start\" and " + self.campaingn2["name"] + " does not.")
+        for key in  (self.campaign[condition]):
+            if key not in self.campaign2[condition]:
+                self.differences.append("The "+ self.campaign["name"] +" has " + key + " in the \"start\" and " + self.campaign2["name"] + " does not.")
                 print(key)
             else:
                 if key == "date":
@@ -50,19 +50,19 @@ class DiferenceChecker:
                     DiferenceChecker.eventChecker(self, condition)
 
     def durationChecker(self, condition):
-        if self.campaingn[condition]["duration"] == self.campaingn2[condition]["duration"]:
+        if self.campaign[condition]["duration"] == self.campaign2[condition]["duration"]:
             self.differences.append(f"The {condition} duration is diferent.")
 
     def dateChecker(self, condition):
-        if self.campaingn[condition]["date"] == self.campaingn2[condition]["date"]:
+        if self.campaign[condition]["date"] == self.campaign2[condition]["date"]:
             self.differences.append(f"The {condition} date is diferent.")
 
     # I assume that the json have been validated at this point soo the event has a source and a identifier!
     def eventChecker(self, condition):
-        if self.campaingn[condition]["event"]["source"] == self.campaingn2[condition]["event"]["source"]:
+        if self.campaign[condition]["event"]["source"] == self.campaign2[condition]["event"]["source"]:
             self.differences.append(f"The {condition} even source is diferent.")
 
-        if self.campaingn[condition]["event"]["identifier"] == self.campaingn2[condition]["event"]["identifier"]:
+        if self.campaign[condition]["event"]["identifier"] == self.campaign2[condition]["event"]["identifier"]:
             self.differences.append(f"The {condition} even identifier is diferent.")
 
     # I assume that the json have been validated so the popup has art and transation and in the rigth format
@@ -71,15 +71,15 @@ class DiferenceChecker:
         DiferenceChecker.transactionChecker(self)
     
     def artChecker(self, condition):
-        if self.campaingn[condition]["art"] == self.campaingn2[condition]["art"]:
+        if self.campaign[condition]["art"] == self.campaign2[condition]["art"]:
             self.differences.append(f"The art {condition} is diferent.")
         
     def transactionChecker(self):
-        if self.campaingn["popup"]["transaction"]["price"] == self.campaingn2["popup"]["transaction"]["price"]:
+        if self.campaign["popup"]["transaction"]["price"] == self.campaign2["popup"]["transaction"]["price"]:
             self.differences.append(f"The price of the popup transaction is diferent.")
-        if self.campaingn["popup"]["transaction"]["item"] == self.campaingn2["popup"]["transaction"]["item"]:
+        if self.campaign["popup"]["transaction"]["item"] == self.campaign2["popup"]["transaction"]["item"]:
             self.differences.append(f"The item of the popup transaction is diferent.")    
-        if self.campaingn["popup"]["transaction"]["amount"] == self.campaingn2["popup"]["transaction"]["amount"]:
+        if self.campaign["popup"]["transaction"]["amount"] == self.campaign2["popup"]["transaction"]["amount"]:
             self.differences.append(f"The amount of the popup transaction is diferent.")
     
     def accessChecker(self):
@@ -109,7 +109,6 @@ def main():
 
         c1.nameChecker()
         c1.startChecker("start")
-
         c1.popupChecker()
         c1.accessChecker()
         c1.endChecker("end")
