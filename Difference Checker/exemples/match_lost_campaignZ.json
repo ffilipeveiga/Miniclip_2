@@ -1,0 +1,21 @@
+{
+    "name": "match_lost_campaign",
+    "start": {
+
+    },
+    "end": {
+        "date": "2020-12-26T00:00:00Z",
+        "event": {
+            "source": "self",
+            "identifier": "purchase"
+        }
+    },
+    "popup": {
+        "art": "match_lost_background.png",
+        "transaction": {
+            "price": "transaction_match_lost",
+            "item": "coins",
+            "amount": "5000"
+        }
+    }
+}

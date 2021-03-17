@@ -1,0 +1,17 @@
+{
+    "name": "match_lost_campaign",
+    "start": {
+        "event": {
+            "source": "application",
+            "identifier": "match_loss"
+        }
+    },
+    "popup": {
+        "art": "match_lost_background.png",
+        "transaction": {
+            "price": "transaction_match_lost",
+            "item": "coins",
+            "amount": "5000"
+        }
+    }
+}

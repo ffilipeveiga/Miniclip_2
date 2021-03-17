@@ -1,0 +1,25 @@
+{
+    "name": "christmas_campaign",
+    "start": {
+        "date": "2020-12-22T00:00:00Z"
+    },
+    "end": {
+        "date": "2020-12-26T00:00:00Z",
+        "duration": "10",
+        "event": {
+            "source": "self",
+            "identifier": "purchase"
+        }
+    },
+    "popup": {
+        "art": "christmas_campaign_background.png",
+        "transaction": {
+            "price": "10",
+            "item": "coins",
+            "amount": "10000"
+        }
+    },
+    "access": {
+        "art": "christmas_campaign_access.png"
+    }
+}
